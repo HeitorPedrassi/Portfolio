@@ -1,3 +1,11 @@
+/* ========================================
+   X. MODELO SEPARADOR
+======================================== */
+
+
+/* ========================================
+   1. RESET E BASE
+======================================== */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +19,9 @@ body {
   font-family: Georgia, sans-serif;
   padding: 0;
 }
+/* ========================================
+   2. TIPOGRAFIA GLOBAL
+======================================== */
 h1, h2, h3, h4, h5, h6 {
   color: white;
   margin-bottom: 1rem;
@@ -18,16 +29,34 @@ h1, h2, h3, h4, h5, h6 {
 .Titulo {
   font-size: 2.5rem;
 }
+p {
+  color: #94a3b4;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+/* ========================================
+   3. LISTAS
+======================================== */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 4rem;
+}
+ul li {
+  margin: 0.5rem 0;
+}
+/* ========================================
+   4. LAYOUT GERAL
+======================================== */
 .container {
   display: flex;
   flex-direction: column;
 }
-.sidebar {
-  width: 100%;
-  padding: 20px;
-}
-
-.conteudo {
+.sidebar, .conteudo {
   width: 100%;
   padding: 20px;
   overflow-y: auto;
@@ -50,26 +79,27 @@ h1, h2, h3, h4, h5, h6 {
     width: 55%;
     height: 100vh;
     padding: 5.5rem 20px;
-    overflow-y: auto;
   }
 }
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 4rem;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 255, 255, 0.08),
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
-ul li {
-  margin: 0.5rem 0;
-}
-a {
-  color: white;
-  text-decoration: none;
-}
-p {
-  color: #94a3b4;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
+
+/* ========================================
+   5. SEÇÃO: HABILIDADES
+======================================== */
 #habilidades {
   margin-top: 3rem;
 }
@@ -84,7 +114,6 @@ p {
   padding: 1rem;
   border-radius: 12px;
   transition: all 0.3s ease;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,4 +132,109 @@ p {
 }
 .habilidade:hover img {
   transform: scale(1.2);
+}
+/* ========================================
+   6. SEÇÃO: EXPERIÊNCIA (TIMELINE)
+======================================== */
+#experiencia {
+  margin-top: 4rem;
+}
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background-color: #94a3b4;
+  transition: height 1.5s ease-out;
+}
+.timeline.animada::before {
+  height: 100%;
+}
+.timeline-item {
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.timeline-item.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+.timeline-point {
+  width: 14px;
+  height: 14px;
+  background-color: #18c4cf;
+  border-radius: 50%;
+  position: absolute;
+  left: -8px;
+  top: 4px;
+}
+.timeline-content h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+.timeline-content .cargo {
+  color: #94a3b4;
+  font-style: italic;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.timeline-content p {
+  color: #94a3b4;
+  line-height: 1.5;
+}
+/* ========================================
+   7. PROJETOS
+======================================== */
+#projetos {
+  margin-top: 4rem;
+}
+.card-projeto {
+  display: flex;
+  flex-direction: row;
+  background-color: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.card-imagem img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.card-conteudo {
+  padding: 1.5rem;
+  flex: 1;
+}
+.card-conteudo h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+.card-conteudo p {
+  color: #cbd5e1;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tags span {
+  background-color: rgba(9, 77, 81, 0.3);
+  color: #18c4cf;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
 }
