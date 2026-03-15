@@ -132,10 +132,11 @@ body::before {
   justify-content: center;
   width: 120px;
   height: 120px;
+  position: relative;
 }
 .habilidade img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   transition: transform 0.3s ease;
 }
 .habilidade:hover {
@@ -145,6 +146,82 @@ body::before {
 }
 .habilidade:hover img {
   transform: scale(1.2);
+}
+.categoria-habilidade {
+  margin-bottom: 2.5rem;
+}
+
+.categoria-habilidade h3 {
+  color: #18c4cf;
+  font-size: 1.2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.categoria-habilidade h3::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+
+  background: linear-gradient(
+    to right,
+    #18c4cf,
+    rgba(24,196,207,0)
+  );
+}
+.skill-info {
+
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  opacity: 0;
+  transition: 0.25s ease;
+}
+.habilidade:hover .skill-info {
+  opacity: 1;
+}
+.skill-name {
+
+  font-size: 0.8rem;
+  color: #cbd5e1;
+
+  display: block;
+  margin-bottom: 4px;
+
+  text-align: center;
+}
+.skill-level {
+
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+.dot {
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #334155;
+}
+.dot.active {
+  background: #18c4cf;
+}
+.dot.half {
+
+  background: linear-gradient(
+    to right,
+    #18c4cf 50%,
+    #334155 50%
+  );
 }
 /* ========================================
    6. SEÇÃO: EXPERIÊNCIA (TIMELINE)
